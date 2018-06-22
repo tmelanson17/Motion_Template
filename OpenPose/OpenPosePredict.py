@@ -1,21 +1,22 @@
 import cv2
 import time
 import numpy as np
- 
+import os 
+
 MODE = "MPI"
- 
+pose_directory =  os.path.dirname(__file__)
 if MODE is "COCO":
-    protoFile = "pose/coco/pose_deploy_linevec.prototxt"
-    weightsFile = "pose/coco/pose_iter_440000.caffemodel"
+    protoFile = os.path.join(pose_directory, "pose/coco/pose_deploy_linevec.prototxt")
+    weightsFile = os.path.join(pose_directory, "pose/coco/pose_iter_440000.caffemodel")
     nPoints = 18
     POSE_PAIRS = [ [1,0],[1,2],[1,5],[2,3],[3,4],[5,6],[6,7],[1,8],[8,9],[9,10],[1,11],[11,12],[12,13],[0,14],[0,15],[14,16],[15,17]]
  
 elif MODE is "MPI" :
-    protoFile = "pose/mpi/pose_deploy_linevec_faster_4_stages.prototxt"
-    weightsFile = "pose/mpi/pose_iter_160000.caffemodel"
+    protoFile = os.path.join(pose_directory, "pose/mpi/pose_deploy_linevec_faster_4_stages.prototxt")
+    weightsFile = os.path.join(pose_directory, "pose/mpi/pose_iter_160000.caffemodel")
     nPoints = 15
     POSE_PAIRS = [[0,1], [1,2], [2,3], [3,4], [1,5], [5,6], [6,7], [1,14], [14,8], [8,9], [9,10], [14,11], [11,12], [12,13] ]
-    POSE_REF = { "right_shoulder": [5, 2, 3], "right_elbow": [2, 3, 4], "left_shoulder": [2, 5, 6], "left_elbow": [5,6,7]}
+    POSE_REF = { "ShoulderR": [5, 2, 3], "ArmR": [2, 3, 4], "ShoulderL": [2, 5, 6], "ArmL": [5,6,7]}
  
 # Returns: A list of points in a certain order
 def predict(frame):
@@ -78,11 +79,11 @@ def create_angles(points):
             angles[joint_name] = angle
     return angles
  
- 
-frame = cv2.imread('single.jpeg')
-t = time.time()
-points = predict(frame)
-angles = create_angles(points)
-print("Total time taken : {:.3f}".format(time.time() - t))
-print("Angles:")
-print(angles)
+if __name__ == "__main__": 
+    frame = cv2.imread('single.jpeg')
+    t = time.time()
+    points = predict(frame)
+    angles = create_angles(points)
+    print("Total time taken : {:.3f}".format(time.time() - t))
+    print("Angles:")
+    print(angles)

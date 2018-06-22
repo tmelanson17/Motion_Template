@@ -1,6 +1,8 @@
 Motion_Template
 
 
+OpenPose code based on the following code repository: https://github.com/spmallick/learnopencv/tree/master/OpenPose
+
 ### Prerequisites
 
 Python 3 and Conda (for Python 3) are the only externals requirement for this: https://www.anaconda.com/download/

@@ -32,3 +32,9 @@ OpenPose/pose/mpi/
 OpenPose/pose/coco/
 
 *.zip
+
+OpenPose/__pycache__/
+
+*.swp
+
+OpenPose/model\.zip\?dl=0
