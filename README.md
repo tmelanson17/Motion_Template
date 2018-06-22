@@ -40,6 +40,13 @@ source activate deeplearning
 
 In addition, the pose and model parameters must be downloaded from the internet. [Please download the repository here](https://www.dropbox.com/s/56r5fe80a23jlks/model.zip?dl=0)
 
+Move the ```model.zip``` file into the ```OpenPose``` directory, then unzip the contents within the directory. You should see three directories appear: ```head```, ```face```, and ```pose``.
+
+To clear space on your system, remove the ZIP file afterwards:
+
+```
+rm model.zip
+```
 
 ## Getting Started
 
