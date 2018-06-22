@@ -55,11 +55,16 @@ rm model.zip
 After installing the environment, make sure the OpenCV works by running the video capture system:
 
 ```
+cd OpenPose
 python OpenPoseImage.py
 ```
 
-For Jupyter projects, **activate the environment first**, THEN run JupyterLab with the following command in the repository:
+This should output a pair of images, one showing the labelled joints and the other the predicted skeleton. After this, type ```cd ..``` to get back to the main directory and run the main program:
 
 ```
-jupyter lab
+python main.py
 ```
+
+Right now, it ouptuts the results of the image as a series of commands for the serial module and prints to stdout. 
+
+**TODO:** make sure this works on the robot end
