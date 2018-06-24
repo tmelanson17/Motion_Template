@@ -1,4 +1,4 @@
-Motion_Template
+# Motion_Template
 
 
 OpenPose code based on the following code repository: https://github.com/spmallick/learnopencv/tree/master/OpenPose
@@ -17,7 +17,7 @@ Open the Anaconda Prompt window (refer to this [Getting Started page](https://co
 In the Anaconda Prompt window, type
 
 ```
-cd [/path/to/DancingRobot]
+cd [/path/to/Motion_Template]
 ```
 
 Install the Conda environment via
@@ -29,7 +29,7 @@ conda env create -f environment.yml
 For Windows, activate the environment via
 
 ```
-activate deeplearning
+conda activate deeplearning
 ```
 
 For Linux / OS X, activate the environment via
@@ -40,7 +40,7 @@ source activate deeplearning
 
 ##### Models
 
-In addition, the pose and model parameters must be downloaded from the internet. [Please download the repository here](https://www.dropbox.com/s/56r5fe80a23jlks/model.zip?dl=0)
+In addition, the pose and model parameters must be downloaded from the internet. [Please download the model ZIP file here](https://www.dropbox.com/s/56r5fe80a23jlks/model.zip?dl=0)
 
 Move the ```model.zip``` file into the ```OpenPose``` directory, then unzip the contents within the directory. You should see three directories appear: ```head```, ```face```, and ```pose``.
 
