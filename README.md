@@ -38,6 +38,12 @@ For Linux / OS X, activate the environment via
 source activate deeplearning
 ```
 
+
+**NOTE:** if *deeplearning* already exists as an environment, two things can be done:
+
+1. Change the *name* field in ```environment.yml``` to a unique name. In the above commands, change *deeplearning*  to the unique name given in environment.yml
+2. Remove the current *deeplearning* environment by typing ```conda env remove -n deeplearning```.
+
 ##### Models
 
 In addition, the pose and model parameters must be downloaded from the internet. [Please download the model ZIP file here](https://www.dropbox.com/s/56r5fe80a23jlks/model.zip?dl=0)
