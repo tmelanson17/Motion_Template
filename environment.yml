@@ -1,0 +1,23 @@
+name: deeplearning
+channels:
+  - menpo
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - opencv=3.4.1
+  - ipython
+  - jupyterlab
+  - notebook
+  - keras=2.1.5
+  - matplotlib
+  - numpy
+  - pandas
+  - pillow
+  - pip
+  - pyserial
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - tensorflow
+  - wheel
