@@ -38,3 +38,5 @@ OpenPose/__pycache__/
 *.swp
 
 OpenPose/model\.zip\?dl=0
+
+*.pyc
