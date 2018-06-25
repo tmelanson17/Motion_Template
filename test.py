@@ -1,6 +1,7 @@
 import cv2
 import time
 from OpenPose.OpenPosePredict import *
+from OpenPose.OpenPoseDraw import drawSkeleton
 from serial import Serial
 from video_loop import spin
 from util import anglesToCommands
@@ -13,6 +14,13 @@ if __name__ == "__main__":
     t = time.time()
     for image_file in glob("SamplePoses/Homemade_poses/*.jpg"):
         frame = cv2.imread(image_file)
+        # Draw and display skeleton
+        points = predictPoints(frame)
+        img = drawSkeleton(points, frame)
+        cv2.imshow("Pose",img)
+        cv2.waitKey(0)
+ 
+        # Check if the pose was detected
         formed, angles = predictAngles(frame)
         if formed:
             print("Incoming command: ")
