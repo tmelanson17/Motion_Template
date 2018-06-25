@@ -40,3 +40,5 @@ OpenPose/__pycache__/
 OpenPose/model\.zip\?dl=0
 
 *.pyc
+
+SamplePoses/

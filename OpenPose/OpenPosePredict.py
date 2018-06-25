@@ -3,6 +3,7 @@ import time
 import numpy as np
 import os 
 
+
 MODE = "MPI"
 pose_directory =  os.path.dirname(__file__)
 if MODE is "COCO":
@@ -18,8 +19,9 @@ elif MODE is "MPI" :
     POSE_PAIRS = [[0,1], [1,2], [2,3], [3,4], [1,5], [5,6], [6,7], [1,14], [14,8], [8,9], [9,10], [14,11], [11,12], [12,13] ]
     POSE_REF = { "ShoulderR": [5, 2, 3], "ArmR": [2, 3, 4], "ShoulderL": [2, 5, 6], "ArmL": [5,6,7]}
  
+
 # Returns: A list of points in a certain order
-def predict(frame):
+def predictPoints(frame):
     frameCopy = np.copy(frame)
     frameWidth = frame.shape[1]
     frameHeight = frame.shape[0]
@@ -63,10 +65,17 @@ def predict(frame):
             points.append(None)
     return points
  
+
+# Returns: True if the output is complete, False otherwise
+def fully_formed_output(angles):
+    return len(angles) == len(POSE_REF) 
+
+
 # Returns: angles from the set of points, dependent on model type
 def create_angles(points):
     angles = dict()
     for joint_name in POSE_REF:
+        # Get reference points for the angle
         refs = POSE_REF[joint_name]
         inner = refs[0]
         mid = refs[1]
@@ -74,11 +83,24 @@ def create_angles(points):
         if points[inner] and points[mid] and points[outer]:
             link1 = np.array(points[inner]) - np.array(points[mid])
             link2 = np.array(points[outer]) - np.array(points[mid])
+            if np.any(np.isnan(link1)) or np.any(np.isnan(link2)):
+                continue
+            # Find the angle between link1 and link2 using dot product
             cosine = np.dot(link1, link2) / (np.linalg.norm(link1) * np.linalg.norm(link2))
             angle = np.arccos(cosine)
             angles[joint_name] = angle
-    return angles
- 
+    return fully_formed_output(angles), angles
+
+
+# Returns: The set of angles
+def predictAngles(frame):
+    points = predictPoints(frame)
+    formed, angles = create_angles(points)
+    if not formed:
+        return None
+    return formed, angles
+
+
 if __name__ == "__main__": 
     frame = cv2.imread('single.jpeg')
     t = time.time()
