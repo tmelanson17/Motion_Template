@@ -25,20 +25,24 @@ motorNames = {
 "FootL" : 16
 }
 
-serialName="" # TODO: Fill in the proper name for the serial output
+serialName="/dev/tty.Bluetooth-Incoming-Port" # TODO: Fill in the proper name for the serial output
 
 def predictAngles(frame):
     points = predict(frame)
     angles = create_angles(points)
+    outputCommands = list()
     for key in angles:
        outputStr = "M%02d%03d" % (motorNames[key], radToDegree(angles[key]))
        print(outputStr)
-       # TODO: Output this to serial
-    
+       outputCommands.append(outputStr)
+    return outputCommands
 
-ser = Serial
+ser = Serial(serialName)
 frame = cv2.imread('OpenPose/single.jpeg')
 t = time.time()
-predictAngles(frame)
+commands = predictAngles(frame)
+# TODO: Output commands to serial
+for com in commands:
+    ser.write(bytearray(com, 'utf-8'))
 # spin(lambda f: predictAngles(f))
 print("Total time taken : {:.3f}".format(time.time() - t))
