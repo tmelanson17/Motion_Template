@@ -14,8 +14,8 @@
 #define DXL_BUS_SERIAL2 2  //Dynamixel on Serial2(USART2)  <-LN101,BT210
 #define DXL_BUS_SERIAL3 3  //Dynamixel on Serial3(USART3)  <-OpenCM 485EXP
 
-#define ShoulderR 1
-#define ShoulderL 2
+#define ShoulderR 2
+#define ShoulderL 1
 #define ArmR 3
 #define ArmL 4
 #define WristR 5
@@ -116,6 +116,11 @@ void usbInterrupt(byte* buffer, byte nCount){
       if(degree>270){
         degree = 270;
       }
+      
+      if(motor % 2 == 0){
+         degree = 180 - (degree - 180);
+      }
+      
       degree = (((degree-90)*630)/180)+185;
       
       Dxl.goalPosition(motor, degree); 
@@ -123,6 +128,11 @@ void usbInterrupt(byte* buffer, byte nCount){
       
     
     if(comString[0] == 'C' && length == 3){
+      
+      if(comString[1] == 'I' && comString[2] == 'N'){
+        initialPosition();
+        delay(500);
+      }
       
       if(comString[1] == 'S' && comString[2] == 'L'){ //Salute
         salute();
