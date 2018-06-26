@@ -14,5 +14,5 @@ elif MODE is "MPI" :
     weightsFile = os.path.join(pose_directory, "pose/mpi/pose_iter_160000.caffemodel") 
     nPoints = 15 
     POSE_PAIRS = [[0,1], [1,2], [2,3], [3,4], [1,5], [5,6], [6,7], [1,14], [14,8], [8,9], [9,10], [14,11], [11,12], [12,13] ] 
-    POSE_REF = { "ShoulderR": [5, 2, 3], "ArmR": [2, 3, 4], "ShoulderL": [2, 5, 6], "ArmL": [5,6,7]} 
+    POSE_REF = { "ArmR": [5, 2, 3], "WristR": [2, 3, 4], "ArmL": [2, 5, 6], "WristL": [5,6,7]} 
   
