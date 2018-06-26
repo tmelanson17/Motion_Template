@@ -42,3 +42,5 @@ OpenPose/model\.zip\?dl=0
 *.pyc
 
 SamplePoses/
+
+\.ipynb_checkpoints/

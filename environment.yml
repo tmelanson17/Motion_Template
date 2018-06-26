@@ -1,4 +1,4 @@
-name: deeplearning
+name: motion-template
 channels:
   - menpo
   - conda-forge
@@ -11,13 +11,16 @@ dependencies:
   - notebook
   - keras=2.1.5
   - matplotlib
+  - moviepy
   - numpy
   - pandas
   - pillow
   - pip
   - pyserial
+  - requests
   - scikit-image
   - scikit-learn
   - scipy
   - tensorflow
+  - tqdm
   - wheel

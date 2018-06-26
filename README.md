@@ -29,20 +29,20 @@ conda env create -f environment.yml
 For Windows, activate the environment via
 
 ```
-conda activate deeplearning
+conda activate motion-template
 ```
 
 For Linux / OS X, activate the environment via
 
 ```
-source activate deeplearning
+source activate motion-template
 ```
 
 
-**NOTE:** if *deeplearning* already exists as an environment, two things can be done:
+**NOTE:** if *motion-template* already exists as an environment, two things can be done:
 
-1. Change the *name* field in ```environment.yml``` to a unique name. In the above commands, change *deeplearning*  to the unique name given in environment.yml
-2. Remove the current *deeplearning* environment by typing ```conda env remove -n deeplearning```.
+1. Change the *name* field in ```environment.yml``` to a unique name. In the above commands, change *motion-template*  to the unique name given in environment.yml
+2. Remove the current *motion-template* environment by typing ```conda env remove -n motion-template```.
 
 ##### Models
 
