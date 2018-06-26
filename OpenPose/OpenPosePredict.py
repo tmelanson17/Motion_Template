@@ -64,7 +64,11 @@ def create_angles(points):
         inner = refs[0]
         mid = refs[1]
         outer = refs[2]
-        if points[inner] and points[mid] and points[outer]:
+        maxIndex = max(inner, max(mid, outer))
+        # If the points exist, convert to an angle
+        if (len(points) > maxIndex and 
+            (points[inner] is not None and points[mid] is not None and
+             points[outer] is not None)):
             link1 = np.array(points[inner]) - np.array(points[mid])
             link2 = np.array(points[outer]) - np.array(points[mid])
             if np.any(np.isnan(link1)) or np.any(np.isnan(link2)):

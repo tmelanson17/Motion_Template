@@ -12,7 +12,7 @@ if __name__ == "__main__":
     correct=0
     incorrect=0
     t = time.time()
-    for image_file in glob("SamplePoses/Homemade_poses/*.jpg"):
+    for image_file in glob("SamplePoses/Homemade_poses/*_cropped.jpg"):
         frame = cv2.imread(image_file)
         # Draw and display skeleton
         points = predictPoints(frame)
@@ -21,7 +21,7 @@ if __name__ == "__main__":
         cv2.waitKey(0)
  
         # Check if the pose was detected
-        formed, angles = predictAngles(frame)
+        formed, angles = create_angles(points)
         if formed:
             print("Incoming command: ")
             commands = anglesToCommands(angles)
