@@ -22,6 +22,10 @@ motorNames = {
 
 radToDegree = lambda f: 180 * f / 3.14159 
 
+serialName="/dev/tty.Bluetooth-Incoming-Port" # TODO: Fill in the proper name for the serial output
+ser = Serial(serialName,9600)
+
+
 def anglesToCommands(angles):
     outputCommands = list()
     for key in angles:
