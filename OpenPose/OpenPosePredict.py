@@ -3,6 +3,7 @@ import time
 import numpy as np
 import os 
 from OpenPose.OpenPoseUtil import *
+from OpenPose.OpenPoseGeom import vector_angle
 
 # Returns: A list of points in a certain order
 def predictPoints(frame):
@@ -73,9 +74,8 @@ def create_angles(points):
             link2 = np.array(points[outer]) - np.array(points[mid])
             if np.any(np.isnan(link1)) or np.any(np.isnan(link2)):
                 continue
-            # Find the angle between link1 and link2 using dot product
-            cosine = np.dot(link1, link2) / (np.linalg.norm(link1) * np.linalg.norm(link2))
-            angle = np.arccos(cosine)
+            # Find the angle between link1 and link2 (backwards to reverse angle) 
+            angle = vector_angle(link1, link2) 
             angles[joint_name] = angle
     return fully_formed_output(angles), angles
 

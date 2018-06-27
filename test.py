@@ -12,7 +12,7 @@ if __name__ == "__main__":
     correct=0
     incorrect=0
     t = time.time()
-    for image_file in glob("SamplePoses/Homemade_poses/*_cropped.jpg"):
+    for image_file in glob("SamplePoses/Homemade_poses/IMG_20180625_09404*.jpg"):
         frame = cv2.imread(image_file)
         # Draw and display skeleton
         points = predictPoints(frame)
