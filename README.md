@@ -73,4 +73,13 @@ python main.py
 
 Right now, it ouptuts the results of the image as a series of commands for the serial module and prints to stdout. 
 
+
+For serial output from video, run:
+
+```
+jupyter lab
+```
+
+and open ```video_pipeline.ipynb```. The first cell is for imports, the second for pipeline function definitions. The third takes a video and outputs the video with pose overlayed. The fourth prints out a command for each frame read.
+
 **TODO:** make sure this works on the robot end

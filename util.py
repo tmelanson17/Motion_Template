@@ -1,4 +1,5 @@
 import numpy as np
+from serial import Serial
 
 motorNames = {
 "ShoulderR" : 1,
