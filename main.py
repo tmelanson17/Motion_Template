@@ -6,6 +6,7 @@ from video_loop import spin
 from util import *
 
 if __name__ == "__main__":
+    print("Running...")
     imgFile = 'OpenPose/single.jpeg'
     frame = cv2.imread(imgFile)
     if frame is None:
