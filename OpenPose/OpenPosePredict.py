@@ -13,14 +13,16 @@ def predictPoints(frame):
     threshold = 0.1
  
     net = cv2.dnn.readNetFromCaffe(protoFile, weightsFile)
- 
+    if net is None:
+        raise IOError("Network model not downloaded. See README for details.")
+
     t = time.time()
     # input image dimensions for the network
     inWidth = 368
     inHeight = 368
     inpBlob = cv2.dnn.blobFromImage(frame, 1.0 / 255, (inWidth, inHeight),
                   (0, 0, 0), swapRB=False, crop=False)
- 
+    
     net.setInput(inpBlob)
  
     output = net.forward()
