@@ -7,6 +7,7 @@ from util import *
 def spin(processor, grayscale=False, write=False):
     cap = cv2.VideoCapture(0)
     i=0
+    print("Entering loop...")
     while(True):
         if i >= 100000:
             break
@@ -19,7 +20,7 @@ def spin(processor, grayscale=False, write=False):
     
         # Process image
         frame = processor(frame)
-    
+        
         # Display the resulting frame
         cv2.imshow('frame',frame)
         if cv2.waitKey(1) & 0xFF == ord('q'):
